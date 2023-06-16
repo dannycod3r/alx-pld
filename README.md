@@ -1,2 +1,3 @@
-# alx-pld
-plds alx
+# ALX PLD Sessions
+
+Digest concepts
