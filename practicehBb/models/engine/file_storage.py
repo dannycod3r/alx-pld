@@ -2,6 +2,14 @@
 """Module file storage"""
 import json
 
+from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+
 
 class FileStorage:
     """class File storage"""
@@ -12,6 +20,14 @@ class FileStorage:
     def all(self):
         """return dict __objects"""
         return self.__objects
+
+    def all_classes(self):
+        """return a list of class names"""
+        classes = set()
+        for key in self.__objects.keys():
+            class_name = key.split('.')[0]
+            classes.add(class_name)
+        return list(classes)
 
     def new(self, obj):
         """ sets in __objects the obj with key
@@ -43,6 +59,3 @@ class FileStorage:
                     self.__objects[key] = cls(**value)
         except FileNotFoundError:
             pass
-
-
-
